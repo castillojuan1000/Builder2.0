@@ -1,4 +1,5 @@
 package com.github.castillojuan1000.Cmds;
+import com.github.castillojuan1000.directories.Parent;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -16,6 +17,8 @@ final public class Init implements Runnable{
   //delete this comment
   @Override
   public void run() {
-    System.out.println("init command running...");
+    System.out.println("init command running...creating Dirs..");
+    Parent.createParentDirectory();
+    System.out.println("ending dir..");
   }
 }
