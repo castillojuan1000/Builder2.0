@@ -13,8 +13,7 @@ final public class Init implements Runnable{
   @Option(names = {"-b", "--branch"}, description = "Desired branch to build.")
   String branch = "";
 
-
-
+  //delete this comment
   @Override
   public void run() {
     System.out.println("init command running...");
