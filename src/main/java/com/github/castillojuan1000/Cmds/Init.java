@@ -8,18 +8,16 @@ import picocli.CommandLine.Option;
 final public class Init implements Runnable{
 
   //flags
-  @Option(names = {"-n", "--name"}, description = "name of the build parent dir")
-  String name  = "";
-
-  @Option(names = {"-b", "--branch"}, description = "Desired branch to build.")
-  String branch = "";
+//  @Option(names = {"-n", "--name"}, description = "name of the build parent dir")
+//  String name  = "";
+//
+//  @Option(names = {"-b", "--branch"}, description = "Desired branch to build.")
+//  String branch = "";
 
 
 
   @Override
   public void run() {
-    System.out.println("init command running...creating Dirs..");
     Parent.createParentDirectory();
-    System.out.println("ending dir..");
   }
 }
