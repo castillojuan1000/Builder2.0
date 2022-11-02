@@ -1,5 +1,8 @@
 package com.github.castillojuan1000.Cmds;
 import com.github.castillojuan1000.directories.Parent;
+import com.github.castillojuan1000.directories.Workspace;
+import com.github.castillojuan1000.Utils.HandleRepo;
+import com.github.castillojuan1000.Utils.GetName;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -17,14 +20,10 @@ final public class Init implements Runnable{
   @Parameters(index = "0", description = "Repository URL to be cloned.")
   private String repoUrl;
 
-  //delete this comment
   @Override
   public void run() {
-    System.out.println(repoUrl);
-
-    Parent.createParentDirectory();
-    String workspacePath = System.getenv("BUILDER_WORKSPACE_DIR");
-    System.out.println("workpace: " + workspacePath);
-
+//    HandleRepo.handleRepo(repoUrl);
+    String name = GetName.getDirName();
+    System.out.println(name);
   }
 }
