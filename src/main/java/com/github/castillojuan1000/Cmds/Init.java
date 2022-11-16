@@ -12,8 +12,8 @@ import picocli.CommandLine.Parameters;
 final public class Init implements Runnable{
 
   //flags
-//  @Option(names = {"-n", "--name"}, description = "name of the build parent dir")
-//  String name  = "";
+  @Option(names = {"-n", "--name"}, description = "name of the build parent dir")
+  String dirName  = "";
 //
 //  @Option(names = {"-b", "--branch"}, description = "Desired branch to build.")
 //  String branch = "";
@@ -22,8 +22,17 @@ final public class Init implements Runnable{
 
   @Override
   public void run() {
-//    HandleRepo.handleRepo(repoUrl);
-    String name = GetName.getDirName();
-    System.out.println(name);
+    System.out.println("starting handling repo");
+    //checks whether repo actually exists in github
+    HandleRepo.handleRepo(repoUrl);
+
+    System.out.println("starting getName");
+    //determines the name of the parent dir
+    String parentDirName = GetName.getDirName(dirName, repoUrl);
+
+    System.out.println("Starting creating dirs");
+    //creates dirs (parent, workspace, logs)
+    Parent.createParentDirectory(parentDirName);
+    System.out.println("creating dirs Done");
   }
 }

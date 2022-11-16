@@ -21,8 +21,6 @@ public class HandleRepo {
     if (result == null){
       System.out.println("Repo does not exists.");
       System.exit(0);
-    }else{
-      System.out.println(result);
     }
 
   }
