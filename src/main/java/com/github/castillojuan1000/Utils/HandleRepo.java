@@ -19,6 +19,7 @@ public class HandleRepo {
     }
 
     if (result == null){
+      //todo: this needs to be added as Log as well
       System.out.println("Repo does not exists.");
       System.exit(0);
     }

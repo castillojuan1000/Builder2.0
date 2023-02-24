@@ -8,6 +8,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
+import com.github.castillojuan1000.Utils.GetMetadata;
 
 @Command(name = "builder", description = "...",
         mixinStandardHelpOptions = true, subcommands = {Init.class}
@@ -26,6 +27,7 @@ public class BuilderCommand implements Runnable {
         // business logic here
 
             System.out.println("Hello World.");
+            GetMetadata.getBuildMetadata();
 
     }
 }

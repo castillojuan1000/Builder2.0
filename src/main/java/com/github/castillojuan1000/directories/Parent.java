@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Parent {
   //todo: this variable might need to be make global
-  static String getCurrentPath = System.getProperty("user.dir");
+  public static String getCurrentPath = System.getProperty("user.dir");
 
 
   public static void createParentDirectory(String parentDirName){
