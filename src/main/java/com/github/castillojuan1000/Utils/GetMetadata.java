@@ -18,6 +18,8 @@ public class GetMetadata {
      String userName = System.getProperty("user.name");
      String homeDir = System.getProperty("user.home");
 
+     //todo: delete this line
+
     Map<String, String> buildMetaData = Map.ofEntries(
         entry("userName", userName),
         entry("homeDir", homeDir),
