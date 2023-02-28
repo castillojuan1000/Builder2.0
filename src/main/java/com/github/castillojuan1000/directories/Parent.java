@@ -1,5 +1,7 @@
 package com.github.castillojuan1000.directories;
+import com.github.castillojuan1000.Utils.GetMetadata;
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 public class Parent {
@@ -17,6 +19,13 @@ public class Parent {
 
     Workspace.createWorkspaceDir(getCurrentPath+"/"+parentDirName+ "_" +timeMilli);
     Logs.createLogsDir(getCurrentPath+"/"+parentDirName+ "_" +timeMilli);
+
+    try {
+      GetMetadata.getBuildMetadata(getCurrentPath+"/"+parentDirName+ "_" +timeMilli);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
   }
 
 }
