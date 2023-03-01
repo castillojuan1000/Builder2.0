@@ -5,23 +5,28 @@ import java.io.IOException;
 import java.util.Date;
 
 public class Parent {
-  //todo: this variable might need to be make global
-  public static String getCurrentPath = System.getProperty("user.dir");
-
-
   public static void createParentDirectory(String parentDirName){
+    String getCurrentPath = System.getProperty("user.dir");
+    //set BUILDS BASE PATH
+    System.setProperty("BUILDS_BASE_PATH", getCurrentPath+"/"+"USER_BUILDS");
+
+
     //get timestamp in milliseconds
     Date date = new Date();
     long timeMilli = date.getTime();
 
     //crates parent, workspace and logs dirs
-    new File(getCurrentPath+"/"+parentDirName+ "_" +timeMilli).mkdirs();
+    String parentDirPath = getCurrentPath+"/"+"USER_BUILDS"+"/"+parentDirName+ "_" +timeMilli;
+    System.setProperty("BUILD_PARENT_PATH", parentDirPath);
 
-    Workspace.createWorkspaceDir(getCurrentPath+"/"+parentDirName+ "_" +timeMilli);
-    Logs.createLogsDir(getCurrentPath+"/"+parentDirName+ "_" +timeMilli);
+    new File(parentDirPath).mkdirs();
 
+    Workspace.createWorkspaceDir(parentDirPath);
+    Logs.createLogsDir(parentDirPath);
+
+    //gets metadata
     try {
-      GetMetadata.getBuildMetadata(getCurrentPath+"/"+parentDirName+ "_" +timeMilli);
+      GetMetadata.getBuildMetadata(parentDirPath);
     } catch (IOException e) {
       e.printStackTrace();
     }
