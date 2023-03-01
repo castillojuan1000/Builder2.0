@@ -5,12 +5,11 @@ import com.github.castillojuan1000.Utils.SystemUtil;
 
 
 public class Workspace {
-  public static String builderWorkspacePath;
-
 
   public static void createWorkspaceDir(String parentDirPath)  {
     new File(parentDirPath+"/workspace").mkdirs();
-    builderWorkspacePath = parentDirPath+"/workspace";
+    String buildWorkspacePath = parentDirPath+"/workspace";
+    System.setProperty("BUILD_WORKSPACE_PATH", buildWorkspacePath);
   }
 
 

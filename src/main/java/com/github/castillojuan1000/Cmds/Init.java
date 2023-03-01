@@ -3,7 +3,9 @@ import com.github.castillojuan1000.directories.Parent;
 import com.github.castillojuan1000.directories.Workspace;
 import com.github.castillojuan1000.Utils.HandleRepo;
 import com.github.castillojuan1000.Utils.GetName;
+import com.github.castillojuan1000.Utils.CloneRepo;
 
+import java.io.IOException;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
@@ -34,5 +36,15 @@ final public class Init implements Runnable{
     //creates dirs (parent, workspace, logs)
     Parent.createParentDirectory(parentDirName);
     System.out.println("creating dirs Done");
+
+    //clone repo into workspace dir
+    try {
+      CloneRepo.cloneRepo();
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
   }
 }

@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class HandleRepo {
-  //todo: clone repo into work dir
   //todo: in the future: we need to check for a branch flag, branch name and clone that branch - capture the metadata for that branch
 
   public static void handleRepo(String repoUrl){
@@ -14,6 +13,9 @@ public class HandleRepo {
     try (InputStream inputStream = Runtime.getRuntime().exec(cmd).getInputStream();
         Scanner s = new Scanner(inputStream).useDelimiter("\\A")) {
       result = s.hasNext() ? s.next() : null;
+
+      //if repo exists, set repoURL property
+      System.setProperty("REPO_URL", repoUrl);
     } catch (IOException e) {
       e.printStackTrace();
     }
