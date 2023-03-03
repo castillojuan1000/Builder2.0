@@ -4,6 +4,8 @@ import com.github.castillojuan1000.directories.Workspace;
 import com.github.castillojuan1000.Utils.HandleRepo;
 import com.github.castillojuan1000.Utils.GetName;
 import com.github.castillojuan1000.Utils.CloneRepo;
+import com.github.castillojuan1000.Logs.TempLogs;
+import java.util.logging.Logger;
 
 import java.io.IOException;
 import picocli.CommandLine.Command;
@@ -24,25 +26,34 @@ final public class Init implements Runnable{
 
   @Override
   public void run() {
-    System.out.println("starting handling repo");
+     Logger logger = TempLogs.getLogger();
+     logger.info("Initializing logs");
+
+    logger.info("Starting handling repo to determine whether repository exists or not.");
     //checks whether repo actually exists in github
     HandleRepo.handleRepo(repoUrl);
+    logger.info("Finished handling repository.");
 
-    System.out.println("starting getName");
+    logger.info("Starting getting project name.");
     //determines the name of the parent dir
     String parentDirName = GetName.getDirName(dirName, repoUrl);
+    logger.info("Finished getting project name.");
 
-    System.out.println("Starting creating dirs");
+    logger.info("Starting creating Dirs");
     //creates dirs (parent, workspace, logs)
     Parent.createParentDirectory(parentDirName);
-    System.out.println("creating dirs Done");
+    logger.info("Finished creating Dirs");
 
     //clone repo into workspace dir
     try {
+      logger.info("Starting cloning repo into workspace dir.");
       CloneRepo.cloneRepo();
+      logger.info("Finished cloning repo into workspace dir.");
     } catch (IOException e) {
+      logger.severe("Repo was unsuccessfully cloned.");
       e.printStackTrace();
     } catch (InterruptedException e) {
+      logger.severe("Repo was unsuccessfully cloned.");
       e.printStackTrace();
     }
 
