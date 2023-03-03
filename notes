@@ -1,0 +1,8 @@
+
+//creates the jar file - executable jar
+./gradlew --no-daemon assemble
+
+java -jar build/libs/builder-0.1-all.jar init
+
+//generate a stand alone executable file
+native-image --no-server -cp build/libs/builder-0.1-all.jar
