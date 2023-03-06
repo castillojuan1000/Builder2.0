@@ -1,14 +1,7 @@
 package com.github.castillojuan1000.Cmds;
-import com.github.castillojuan1000.DeriveProjectType.DeriveLenguage;
-import com.github.castillojuan1000.directories.Parent;
-import com.github.castillojuan1000.directories.Workspace;
-import com.github.castillojuan1000.Utils.HandleRepo;
-import com.github.castillojuan1000.Utils.GetName;
-import com.github.castillojuan1000.Utils.CloneRepo;
-import com.github.castillojuan1000.Logs.TempLogs;
-import java.util.logging.Logger;
+import com.github.castillojuan1000.DeriveProjectType.DeriveLanguage;
 
-import java.io.IOException;
+import com.github.castillojuan1000.Utils.HandleRepo;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
@@ -32,7 +25,7 @@ final public class Init implements Runnable{
 //
 //    logger.info("Starting handling repo to determine whether repository exists or not.");
 //    //checks whether repo actually exists in github
-//    HandleRepo.handleRepo(repoUrl);
+    HandleRepo.handleRepo(repoUrl);
 //    logger.info("Finished handling repository.");
 //
 //    logger.info("Starting getting project name.");
@@ -58,7 +51,7 @@ final public class Init implements Runnable{
 //      e.printStackTrace();
 //    }
 
-    DeriveLenguage.deriveLenguage();
+    DeriveLanguage.deriveLanguage();
 
   }
 }

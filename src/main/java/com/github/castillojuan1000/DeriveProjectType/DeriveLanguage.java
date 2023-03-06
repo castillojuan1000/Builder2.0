@@ -6,11 +6,30 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class DeriveLenguage {
-  public static void deriveLenguage(){
+public class DeriveLanguage {
+  public static void deriveLanguage(){
     try{
-      String repoUrl = "https://api.github.com/repos/AuditDeploy/Builder";
+      String buildRepo = System.getProperty("REPO_URL");
+      //get repo userName and project name
+      String regex = "github.com/(.*)/(.*)";
+      Pattern pattern = Pattern.compile(regex);
+      Matcher matcher = pattern.matcher(buildRepo);
+
+      String username = null;
+      String repoName = null;
+
+      if (matcher.find()) {
+        username = matcher.group(1);
+        repoName = matcher.group(2);
+      }
+
+      //create a GitHub API to fetch project main language
+      String repoUrl = "https://api.github.com/repos/{userName}/{repo}";
+      repoUrl = repoUrl.replace("{userName}", username).replace("{repo}",repoName);
+
 
       URL url = new URL(repoUrl);
       HttpURLConnection con = (HttpURLConnection) url.openConnection();
