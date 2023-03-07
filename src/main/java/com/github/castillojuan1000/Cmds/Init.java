@@ -58,6 +58,7 @@ final public class Init implements Runnable{
       e.printStackTrace();
     }
 
+    //todo: there might be some conflicts with temp logger and local logger
     logger.info("Starting deriving project.");
     DeriveProject.deriveProject();
 
