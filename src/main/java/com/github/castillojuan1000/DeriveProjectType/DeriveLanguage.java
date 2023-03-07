@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DeriveLanguage {
-  public static void deriveLanguage(){
+  public static String deriveLanguage(){
     try{
       String buildRepo = System.getProperty("REPO_URL");
       //get repo userName and project name
@@ -46,12 +46,14 @@ public class DeriveLanguage {
       ObjectMapper mapper = new ObjectMapper();
       JsonNode json = mapper.readTree(response.toString());
       String mainLanguage = json.get("language").asText();
-      System.out.println("Main language of the repository is: " + mainLanguage);
+
+      return mainLanguage;
 
 
     }catch (Exception e){
       System.out.println("Error: " + e.getMessage());
     }
 
+    return null;
   }
 }
