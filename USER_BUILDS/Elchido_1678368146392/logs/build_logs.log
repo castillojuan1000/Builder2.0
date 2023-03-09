@@ -1,9 +1,0 @@
-[2023-03-09 08:22:26] Initializing logs 
-[2023-03-09 08:22:26] Starting handling repo to determine whether repository exists or not. 
-[2023-03-09 08:22:26] Finished handling repository. 
-[2023-03-09 08:22:26] Starting getting project name. 
-[2023-03-09 08:22:26] Finished getting project name. 
-[2023-03-09 08:22:26] Starting creating Dirs 
-[2023-03-09 08:22:26] Temp logs file deleted and build logs file created. 
-[2023-03-09 08:22:27] Java project detected. 
-[2023-03-09 08:22:27] Compiling Java project. 
