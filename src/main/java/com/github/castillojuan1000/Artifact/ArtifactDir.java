@@ -24,5 +24,6 @@ public class ArtifactDir {
 
     //copy contents over to artifact dir
     CopyContents.CopyMetadata();
+    CopyContents.CopyBinary();
   }
 }
