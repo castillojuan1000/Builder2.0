@@ -60,6 +60,27 @@ public class CopyContents {
 
   }
 
+  public static void CopyLogs(){
+    //logs
+    Logger localLogger = Logs.localLogger();
+
+    //source
+    String logsDirPath = System.getProperty("BUILD_LOGS_PATH");
+    Path localLogsFile = Paths.get(logsDirPath+"/build_logs.log");
+
+    //destination
+    Path artifactDirPath = Paths.get(System.getProperty("BUILDER_ARTIFACT_DIR"));
+
+    //copy
+    try {
+      Files.copy(localLogsFile, artifactDirPath.resolve(localLogsFile.getFileName()));
+      localLogger.info("logs file copied successfully.");
+    } catch (IOException e) {
+      localLogger.severe("Error copying logs file: " + e.getMessage());
+    }
+
+  }
+
   public static File findJarFile(String dirPath) {
     File dir = new File(dirPath);
     if (!dir.isDirectory()) {

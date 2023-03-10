@@ -1,10 +1,11 @@
 package com.github.castillojuan1000.Artifact;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 public class ArtifactDir {
-  public static void CreateArtifactDir(){
+  public static void CreateArtifactDir() throws IOException {
     String parentDir = System.getProperty("BUILD_PARENT_PATH");
 
     //get timestamp
@@ -25,5 +26,8 @@ public class ArtifactDir {
     //copy contents over to artifact dir
     CopyContents.CopyMetadata();
     CopyContents.CopyBinary();
+    CopyContents.CopyLogs();
+    ZipArtifact.ZipArtifact();
+
   }
 }
