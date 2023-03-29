@@ -1,13 +1,14 @@
 package com.github.castillojuan1000.Cmds;
-import com.github.castillojuan1000.directories.Parent;
-import com.github.castillojuan1000.directories.Workspace;
-import com.github.castillojuan1000.Utils.HandleRepo;
-import com.github.castillojuan1000.Utils.GetName;
-import com.github.castillojuan1000.Utils.CloneRepo;
-import com.github.castillojuan1000.Logs.TempLogs;
-import java.util.logging.Logger;
+import com.github.castillojuan1000.DeriveProjectType.DeriveLanguage;
 
+import com.github.castillojuan1000.DeriveProjectType.DeriveProject;
+import com.github.castillojuan1000.Logs.TempLogs;
+import com.github.castillojuan1000.Utils.CloneRepo;
+import com.github.castillojuan1000.Utils.GetName;
+import com.github.castillojuan1000.Utils.HandleRepo;
+import com.github.castillojuan1000.directories.Parent;
 import java.io.IOException;
+import java.util.logging.Logger;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
@@ -56,6 +57,10 @@ final public class Init implements Runnable{
       logger.severe("Repo was unsuccessfully cloned.");
       e.printStackTrace();
     }
+
+    //todo: there might be some conflicts with temp logger and local logger
+    logger.info("Starting deriving project.");
+    DeriveProject.deriveProject();
 
   }
 }
